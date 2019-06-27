@@ -1,0 +1,23 @@
+{
+  "name": "webpack_demo",
+  "version": "1.0.0",
+  "description": "webpack学习",
+  "scripts": {
+    "bundle": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caiyichen/webpack_demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caiyichen/webpack_demo/issues"
+  },
+  "homepage": "https://github.com/caiyichen/webpack_demo#readme",
+  "devDependencies": {
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5"
+  }
+}
