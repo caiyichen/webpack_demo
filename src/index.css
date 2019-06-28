@@ -1,0 +1,11 @@
+@import "./component/header/header.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.flag {
+  width: 100px;
+  height: 100px;
+}
