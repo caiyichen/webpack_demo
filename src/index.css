@@ -1,4 +1,4 @@
-@import "./component/header/header.scss";
+@import "component/header/header.scss";
 
 body {
   margin: 0;
@@ -8,4 +8,5 @@ body {
 .flag {
   width: 100px;
   height: 100px;
+  transform: translate(10px, 10px);
 }

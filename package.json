@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/caiyichen/webpack_demo#readme",
   "devDependencies": {
+    "autoprefixer": "^9.6.0",
     "css-loader": "^3.0.0",
     "file-loader": "^4.0.0",
     "node-sass": "^4.12.0",
