@@ -1,3 +1,6 @@
+// 使低版本浏览器也支持所有es6的语法
+import "@babel/polyfill";
+
 import Header from "./component/header/header.js";
 import Sider from "./component/sider";
 import Footer from "./component/footer";
@@ -16,7 +19,17 @@ new Header();
 new Sider();
 new Footer();
 createImg();
-console.log(dataJson);
+
+// es6会被转成es5
+let arr = [1, 2, 3];
+arr.map(item => {
+  console.log(item);
+});
+new Promise((resolve, reject) => {
+  resolve(1);
+}).then(data => {
+  console.log("success", data);
+});
 
 var imgDom = new Image();
 imgDom.src = flagImgURI;
