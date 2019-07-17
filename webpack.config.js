@@ -2,9 +2,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 // 入口文件是"./src/index.js"，进行打包，将打包好的文件bundle.js 放在当前目录下的"dist"文件夹里。
-
 module.exports = {
   mode: "development", // production:被压缩；development:不压缩
   devtool: "source-map", // development cheap-module-eval-source-map
@@ -14,7 +14,9 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"), // 从这个文件夹启动一个服务
     open: true, // 启动服务时自动在浏览器中打开
-    port: 1992
+    port: 1992,
+    hot: true, // 开启热模块更新功能
+    hotOnly: true // 即使HMR功能没生效，也不要浏览器自动重新刷新
     // proxy: {}
   },
   entry: {
@@ -32,18 +34,25 @@ module.exports = {
   // 模块处理
   module: {
     rules: [
+      // 对js文件进行babel-loader处理（将ES6语法转换成ES5）
+      {
+        test: /\.js$/,
+        exclude: /node_modules/, // 没必要对第三方模块里的js再进行打包处理，babel编译，提升打包速度
+        loader: "babel-loader"
+        // options:{} // 对象的内容可摘出来单独放到.babelrc文件中
+      },
       {
         test: /\.(png|jpe?g|gif)$/,
         use: {
           loader: "url-loader", // file-loader
           options: {
             name: "images/[name]_[hash].[ext]",
-            limit: 1024000 // 文件大小限制 1000kb
+            limit: 10240 // 10kb 文件大小限制。小于limit值：则打包成base64放在包文件中（减少http请求）；大于：则打包复制文件到dist目录下并返回文件名（减少包文件大小）
           }
         }
       },
       {
-        test: /\.(css|sass|scss)$/,
+        test: /\.(sass|scss)$/,
         use: [
           "style-loader",
           {
@@ -58,41 +67,16 @@ module.exports = {
         ]
       },
       {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader", "postcss-loader"]
+      },
+      {
         test: /\.(eot|svg|ttf|woff|woff2)$/, // 处理字体图标文件
         use: [
           {
             loader: "file-loader",
             options: {
               name: "font/[name].[ext]"
-            }
-          }
-        ]
-      },
-      // 对js文件进行babel-loader处理（将es6语法转换成es5）
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
-        options: {
-          presets: [
-            [
-              "@babel/preset-env",
-              {
-                // 低版本浏览器中只补充项目中使用到的es6语法
-                useBuiltIns: "usage"
-              }
-            ]
-          ]
-        }
-      },
-      {
-        test: /.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: [["@babel/preset-env", { useBuiltIns: "usage" }]]
             }
           }
         ]
@@ -104,6 +88,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin() // 使用热模块更新插件
   ]
 };

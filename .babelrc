@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "chrome": "67" // chrome浏览器版本大于67时就不做转换
+        },
+        "useBuiltIns": "usage" // 低版本浏览器中只补充项目中使用到的es6语法
+      }
+    ],
+    "@babel/preset-react"
+  ]
+}

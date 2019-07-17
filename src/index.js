@@ -6,6 +6,7 @@ import Sider from "./component/sider";
 import Footer from "./component/footer";
 
 import createImg from "./createImg";
+import util from "./util/util";
 import dataJson from "./data.json";
 
 // 引入图片模块
@@ -15,34 +16,43 @@ import style from "./index.css";
 // 引入字体图标样式
 import fontStyle from "./font/iconfont.css";
 
+// Webpack 实现对React框架代码的打包
+import React from "react";
+import ReactDom from "react-dom";
+import App from "./app";
+
+ReactDom.render(<App />, document.getElementById("root"));
+
 new Header();
 new Sider();
 new Footer();
 createImg();
 
-// es6会被转成es5
+// file-loader：使用字体图标库
+var rootDom = document.getElementById("root");
+var divDom = document.createElement("div");
+divDom.innerHTML = `
+<span class="iconfont iconaixin"></span>
+<span class="iconfont iconbianji"></span>
+<span class="iconfont icondianhua"></span>`;
+rootDom.appendChild(divDom);
+
+// babel：ES6会被转成ES5
 let arr = [1, 2, 3];
-arr.map(item => {
-  console.log(item);
-});
+arr.map(item => {});
 new Promise((resolve, reject) => {
   resolve(1);
 }).then(data => {
   console.log("success", data);
 });
 
-var imgDom = new Image();
-imgDom.src = flagImgURI;
-imgDom.classList.add("flag");
-// 添加class（模块化）
-// imgDom.classList.add(style.flag);
-var rootDom = document.getElementById("root");
-rootDom.appendChild(imgDom);
-
-// 使用字体图标库
-var divDom = document.createElement("div");
-divDom.innerHTML = `
-<div class="iconfont iconaixin"></div>
-<div class="iconfont iconbianji"></div>
-<div class="iconfont icondianhua"></div>`;
-rootDom.appendChild(divDom);
+// 热模块更新（HMR）
+if (module.hot) {
+  // 如果检测到"./component/footer"模块有更新，则重新执行函数
+  module.hot.accept("./component/footer", () => {
+    document
+      .getElementById("root")
+      .removeChild(document.getElementById("footer"));
+    new Footer();
+  });
+}
