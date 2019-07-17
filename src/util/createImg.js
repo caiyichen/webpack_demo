@@ -1,5 +1,6 @@
-import flagImgURI from "./images/flag.jpg";
-import style from "./index.css";
+// 引入图片模块
+import flagImgURI from "../images/flag.jpg";
+import style from "../index.css";
 
 function createImg() {
   var imgDom = new Image();

@@ -49,7 +49,7 @@ var isValid = function(string) {
 // 规律：遍历的当前一个如果是正数，则判断与栈中的最后一个相加是否为0，不为0则是false。为0时又已经从stack中移除了，所以不影响下一个的判断。
 
 let result = isValid("[[]{}()]");
-console.log(result);
+// console.log(result);
 
 /**
  * 栈
@@ -100,7 +100,7 @@ let Stack = (function() {
 let stack = new Stack();
 stack.push(5);
 let symbols = Object.getOwnPropertySymbols(stack); // [Symbol(items)]
-console.log(stack[symbols[0]]);
+// console.log(stack[symbols[0]]);
 
 /**
  * 队列
