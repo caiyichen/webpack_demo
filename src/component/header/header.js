@@ -1,4 +1,5 @@
 import React from "react";
+import "./header.scss";
 
 function Header() {
   // var rootDom = document.getElementById("root");

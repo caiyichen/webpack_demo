@@ -44,6 +44,7 @@ class App extends Component {
           <span className="iconfont icondianhua" />
         </div>
         <Footer />
+        <iframe src="editor.html" />
       </div>
     );
   }

@@ -20,14 +20,14 @@ module.exports = {
     // proxy: {}
   },
   entry: {
-    // entry为object时，默认打包出的文件名为键值+'.js'
-    main: "./src/index.js"
-    // sub: "./src/index.js"
+    // entry为object时，默认打包输出的文件名为键值+'.js'
+    index: "./src/index.js",
+    editor: "./src/editor.js"
   },
   // 打包输出配置
   output: {
     // filename: "bundle.js", // 打包出的文件名
-    filename: "[name].js", // main.js sub.js
+    filename: "[name].js", // index.js editor.js
     path: path.resolve(__dirname, "dist") // （打包输出的文件路径，文件夹名）。__dirname：当前文件所在路径
     // publicPath: "https://cdn.example.com/assets/"
   },
@@ -86,8 +86,16 @@ module.exports = {
   // 插件
   plugins: [
     new CleanWebpackPlugin(),
+    // 打包完成后基于template生成html页面，并自动引入打包后对应的js
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
+      template: "./src/index.html", // 基于这个模板生成html文件
+      filename: "index.html", // 打包生成的html的文件名
+      chunks: ["index"] // index.html引入打包后的index.js
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      filename: "editor.html",
+      chunks: ["editor"] // editor.html引入打包后的editor.js
     }),
     new webpack.HotModuleReplacementPlugin() // 使用热模块更新插件
   ]
