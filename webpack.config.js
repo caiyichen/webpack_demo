@@ -12,6 +12,7 @@ module.exports = {
   // 打包入口文件
   // entry: "./src/index.js",
   devServer: {
+    overlay: true, // 当有错误时会在浏览器中弹出提示错误(如Eslint错误)
     contentBase: path.join(__dirname, "dist"), // 从这个文件夹启动一个服务
     open: true, // 启动服务时自动在浏览器中打开
     port: 1992,
@@ -34,12 +35,23 @@ module.exports = {
   // 模块处理
   module: {
     rules: [
-      // 对js文件进行babel-loader处理（将ES6语法转换成ES5）
       {
         test: /\.js$/,
         exclude: /node_modules/, // 没必要对第三方模块里的js再进行打包处理，babel编译，提升打包速度
-        loader: "babel-loader"
-        // options:{} // 对象的内容可摘出来单独放到.babelrc文件中
+        use: [
+          {
+            loader: "babel-loader" // 对js文件进行babel-loader处理（将ES6语法转换成ES5）
+            // options:{} // 对象的内容可摘出来单独放到.babelrc文件中
+          }
+          // {
+          //   loader: "eslint-loader", // 对js文件进行代码风格检测
+          //   options: {
+          //     fix: true, // 开启自动修复功能
+          //     cache: true // 开启缓存
+          //   },
+          //   enforce: "pre" // 对js文件，强制在其他loader执行之前执行
+          // }
+        ]
       },
       {
         test: /\.(png|jpe?g|gif)$/,
