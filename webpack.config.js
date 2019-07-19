@@ -42,15 +42,15 @@ module.exports = {
           {
             loader: "babel-loader" // 对js文件进行babel-loader处理（将ES6语法转换成ES5）
             // options:{} // 对象的内容可摘出来单独放到.babelrc文件中
+          },
+          {
+            loader: "eslint-loader", // 对js文件进行代码风格检测
+            options: {
+              fix: true, // 开启自动修复功能
+              cache: true // 开启缓存
+            },
+            // enforce: "pre" // 对js文件，强制在其他loader执行之前执行
           }
-          // {
-          //   loader: "eslint-loader", // 对js文件进行代码风格检测
-          //   options: {
-          //     fix: true, // 开启自动修复功能
-          //     cache: true // 开启缓存
-          //   },
-          //   enforce: "pre" // 对js文件，强制在其他loader执行之前执行
-          // }
         ]
       },
       {
