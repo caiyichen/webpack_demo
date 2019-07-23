@@ -14,7 +14,7 @@
 
 // var instance = fn()();
 
-const isValid = function (string) {
+function isValid(string) {
   const arr = string.split("");
 
   const map = {
@@ -27,6 +27,7 @@ const isValid = function (string) {
   };
 
   const stack = [];
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < arr.length; i++) {
     if (map[arr[i]] < 0) {
       stack.push(arr[i]);
@@ -43,20 +44,20 @@ const isValid = function (string) {
   }
 
   return true;
-};
+}
 
 // stack里保存的都是左括号（值<0）
 // 规律：遍历的当前一个如果是正数，则判断与栈中的最后一个相加是否为0，不为0则是false。为0时又已经从stack中移除了，所以不影响下一个的判断。
 
-const result = isValid("[[]{}()]");
+isValid("[[]{}()]");
 // console.log(result);
 
 /**
  * 栈
  */
-const Stack = (function () {
+const Stack = (function stack() {
   const _items = Symbol("items");
-  class Stack {
+  return class {
     constructor() {
       this[_items] = [];
     }
@@ -92,14 +93,12 @@ const Stack = (function () {
     print() {
       console.log(this[_items].toString());
     }
-  }
-
-  return Stack;
+  };
 }());
 
 const stack = new Stack();
 stack.push(5);
-const symbols = Object.getOwnPropertySymbols(stack); // [Symbol(items)]
+Object.getOwnPropertySymbols(stack); // [Symbol(items)]
 // console.log(stack[symbols[0]]);
 
 /**
@@ -145,4 +144,4 @@ class Queue {
   }
 }
 
-const queue = new Queue();
+new Queue();

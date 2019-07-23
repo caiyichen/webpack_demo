@@ -8,18 +8,17 @@ import dataJson from "./data.json";
 
 class App extends Component {
   componentDidMount() {
-    console.log(123);
     createImg();
     new Sider();
 
     // babel：ES6会被转成ES5
-    const arr = [1, 2, 3];
-    arr.map((item) => {});
-    new Promise((resolve, reject) => {
-      resolve(1);
-    }).then((data) => {
-      //   console.log("success", data);
-    });
+    // const arr = [1, 2, 3];
+    // arr.map((item) => {});
+    // new Promise((resolve, reject) => {
+    //   resolve(1);
+    // }).then((data) => {
+    //   //   console.log("success", data);
+    // });
 
     // 热模块更新（HMR）
     if (module.hot) {

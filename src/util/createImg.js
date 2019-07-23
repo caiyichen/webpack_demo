@@ -1,6 +1,6 @@
 // 引入图片模块
 import flagImgURI from "../images/flag.jpg";
-import style from "../index.css";
+import "../index.css";
 
 function createImg() {
   const imgDom = new Image();

@@ -48,7 +48,7 @@ module.exports = {
             options: {
               fix: true, // 开启自动修复功能
               cache: true // 开启缓存
-            },
+            }
             // enforce: "pre" // 对js文件，强制在其他loader执行之前执行
           }
         ]
