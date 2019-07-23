@@ -7,9 +7,9 @@ import ReactDom from "react-dom";
 import App from "./app";
 
 // 引入 CSS 模块
-import style from "./index.css";
+import "./index.css";
 // 引入字体图标样式
-import fontStyle from "./font/iconfont.css";
+import "./font/iconfont.css";
 import "./util/util";
 
 ReactDom.render(<App />, document.getElementById("root"));

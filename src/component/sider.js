@@ -1,6 +1,6 @@
 function Sider() {
-  var rootDom = document.getElementById("root");
-  var Sider = document.createElement("div");
+  const rootDom = document.getElementById("root");
+  const Sider = document.createElement("div");
   Sider.innerHTML = "Sider";
   rootDom.appendChild(Sider);
 }

@@ -14,24 +14,24 @@
 
 // var instance = fn()();
 
-var isValid = function(string) {
+const isValid = function (string) {
   const arr = string.split("");
 
-  let map = {
+  const map = {
     "(": -1,
     ")": 1,
     "[": -2,
     "]": 2,
     "{": -3,
-    "}": 3
+    "}": 3,
   };
 
-  let stack = [];
+  const stack = [];
   for (let i = 0; i < arr.length; i++) {
     if (map[arr[i]] < 0) {
       stack.push(arr[i]);
     } else {
-      let stackLast = stack.pop();
+      const stackLast = stack.pop();
       if (map[arr[i]] + map[stackLast] !== 0) {
         return false;
       }
@@ -48,14 +48,14 @@ var isValid = function(string) {
 // stack里保存的都是左括号（值<0）
 // 规律：遍历的当前一个如果是正数，则判断与栈中的最后一个相加是否为0，不为0则是false。为0时又已经从stack中移除了，所以不影响下一个的判断。
 
-let result = isValid("[[]{}()]");
+const result = isValid("[[]{}()]");
 // console.log(result);
 
 /**
  * 栈
  */
-let Stack = (function() {
-  let _items = Symbol("items");
+const Stack = (function () {
+  const _items = Symbol("items");
   class Stack {
     constructor() {
       this[_items] = [];
@@ -95,11 +95,11 @@ let Stack = (function() {
   }
 
   return Stack;
-})();
+}());
 
-let stack = new Stack();
+const stack = new Stack();
 stack.push(5);
-let symbols = Object.getOwnPropertySymbols(stack); // [Symbol(items)]
+const symbols = Object.getOwnPropertySymbols(stack); // [Symbol(items)]
 // console.log(stack[symbols[0]]);
 
 /**
@@ -145,4 +145,4 @@ class Queue {
   }
 }
 
-var queue = new Queue();
+const queue = new Queue();

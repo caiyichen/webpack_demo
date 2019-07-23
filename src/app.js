@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "./component/header/header.js";
+import Header from "./component/header/header";
 import Sider from "./component/sider";
 import Footer from "./component/footer";
 
@@ -8,15 +8,16 @@ import dataJson from "./data.json";
 
 class App extends Component {
   componentDidMount() {
+    console.log(123);
     createImg();
     new Sider();
 
     // babel：ES6会被转成ES5
-    let arr = [1, 2, 3];
-    arr.map(item => {});
+    const arr = [1, 2, 3];
+    arr.map((item) => {});
     new Promise((resolve, reject) => {
       resolve(1);
-    }).then(data => {
+    }).then((data) => {
       //   console.log("success", data);
     });
 
@@ -24,9 +25,7 @@ class App extends Component {
     if (module.hot) {
       // 如果检测到"./component/footer"模块有更新，则重新执行函数
       module.hot.accept("./component/footer", () => {
-        document
-          .getElementById("root")
-          .removeChild(document.getElementById("Sider"));
+        document.getElementById("root").removeChild(document.getElementById("Sider"));
         new Footer();
       });
     }
@@ -36,7 +35,8 @@ class App extends Component {
     return (
       <div>
         <Header />
-        hello world,{dataJson.name}
+        hello world,
+        {dataJson.name}
         {/* file-loader：使用字体图标库 */}
         <div>
           <span className="iconfont iconaixin" />
@@ -44,7 +44,7 @@ class App extends Component {
           <span className="iconfont icondianhua" />
         </div>
         <Footer />
-        <iframe src="editor.html" />
+        <iframe title="iframe" src="editor.html" />
       </div>
     );
   }
