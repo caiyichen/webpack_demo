@@ -42,6 +42,8 @@ module.exports = {
     // 'react/no-deprecated': 1,
   },
   globals: {
-    module: false
+    module: false,
+    describe: false,
+    it: false
   }
 };

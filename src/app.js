@@ -4,6 +4,7 @@ import Sider from "./component/sider";
 import Footer from "./component/footer";
 
 import createImg from "./util/createImg";
+
 import dataJson from "./data.json";
 
 class App extends Component {
@@ -44,6 +45,9 @@ class App extends Component {
         </div>
         <Footer />
         <iframe title="iframe" src="editor.html" />
+        <div className="box">
+          <div className="content">垂直居中</div>
+        </div>
       </div>
     );
   }
