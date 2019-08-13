@@ -11,15 +11,32 @@ const util = require("./util");
 // 断言功能由断言库来实现，Mocha本身不带断言库，所以必须先引入断言库。
 
 // 测试套件
-describe("util测试", () => {
+describe("util测试1", () => {
   // 测试用例
   it("加法测试", () => {
     // 断言：调用add(1, 1)，结果应该等于2
     expect(util.add(1, 1)).to.be.equal(2);
   });
 
-  it("修改姓名测试", () => {
-    // 对象深层需要使用deep
-    expect(util.changeName({ name: "caicai" }, "shitou")).to.be.deep.equal({ name: "shitou" });
+  it("测试异步", (done) => {
+    let y = 0;
+    setTimeout(() => {
+      y = 1;
+      expect(y).to.be.equal(1);
+      done(); // 通知Mocha测试结束
+    }, 1000);
+  });
+
+  it("测试promise", () => {
+    let x = 0;
+    // 一定要return Promise
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        x = 2;
+        resolve(x);
+      }, 2000);
+    }).then((data) => {
+      expect(data).to.be.equal(2);
+    });
   });
 });

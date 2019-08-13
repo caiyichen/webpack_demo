@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./component/header/header";
 import Sider from "./component/sider";
+import Content from "./component/content";
 import Footer from "./component/footer";
 
 import createImg from "./util/createImg";
@@ -43,6 +44,7 @@ class App extends Component {
           <span className="iconfont iconbianji" />
           <span className="iconfont icondianhua" />
         </div>
+        <Content />
         <Footer />
         <iframe title="iframe" src="editor.html" />
         <div className="box">
