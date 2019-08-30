@@ -1,4 +1,5 @@
 import React from "react";
+/*eslint-disable */
 import axios from "axios";
 
 class Content extends React.Component {
@@ -11,18 +12,24 @@ class Content extends React.Component {
 
   componentDidMount() {
     this.setStateFunc();
+    this.getMockData();
+  }
+
+  getMockData() {
+    console.log(2111);
     axios({
-      url: "/list",
+      url: "/mock",
+      method: "get",
       baseURL: "https://www.easy-mock.com/mock/5cf5cc38b1f9bc4337c5e5b8/example/api/",
       headers: {
-        expired: ""
-        // "Access-Control-Allow-Origin": "*"
+        "cache-control": "max-age=86400,public"
       }
     }).then(
-      (data) => {
-        console.log(...data.data.data.list);
+      data => {
+        console.log(data);
+        // console.log(...data.data.data.list);
       },
-      (err) => {
+      err => {
         console.log("err", err);
       }
     );
@@ -38,16 +45,21 @@ class Content extends React.Component {
       this.setState({ count: this.state.count + 1 }, () => {
         console.log(33, this.state.count);
       });
+
       console.log(22, this.state.count);
     }, 0);
+
     console.log(11, this.state.count);
   }
 
   render() {
-    return <div>{this.state.count}</div>;
+    return (
+      <div>
+        <button onClick={this.getMockData.bind(this)}>点击</button>
+        <div className="move-box"></div>
+      </div>
+    );
   }
 }
-
-
 
 export default Content;

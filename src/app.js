@@ -47,9 +47,10 @@ class App extends Component {
         <Content />
         <Footer />
         <iframe title="iframe" src="editor.html" />
-        <div className="box">
+        {/* 模拟弹窗垂直居中 */}
+        {/* <div className="box">
           <div className="content">垂直居中</div>
-        </div>
+        </div> */}
       </div>
     );
   }
