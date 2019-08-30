@@ -1,5 +1,4 @@
 import React from "react";
-/*eslint-disable */
 import axios from "axios";
 
 class Content extends React.Component {
@@ -16,7 +15,7 @@ class Content extends React.Component {
   }
 
   getMockData() {
-    console.log(2111);
+    console.log(222);
     axios({
       url: "/mock",
       method: "get",
