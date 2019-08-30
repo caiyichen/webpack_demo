@@ -14,7 +14,7 @@ const util = require("./util");
 describe("util测试1", () => {
   // 测试用例
   it("加法测试", () => {
-    // 断言：调用add(1, 1)，结果应该等于2
+    // 断言：调用add(1, 1)，结果应该等于 2
     expect(util.add(1, 1)).to.be.equal(2);
   });
 

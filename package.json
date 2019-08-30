@@ -62,7 +62,6 @@
     }
   },
   "lint-staged": {
-    "*": "npm test",
     "src/**/*.js": [
       "eslint --fix",
       "git add"

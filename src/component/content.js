@@ -15,7 +15,7 @@ class Content extends React.Component {
   }
 
   getMockData() {
-    console.log(222);
+    console.log(222333);
     axios({
       url: "/mock",
       method: "get",
@@ -24,11 +24,11 @@ class Content extends React.Component {
         "cache-control": "max-age=86400,public"
       }
     }).then(
-      data => {
+      (data) => {
         console.log(data);
         // console.log(...data.data.data.list);
       },
-      err => {
+      (err) => {
         console.log("err", err);
       }
     );
