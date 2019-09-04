@@ -1,5 +1,5 @@
 // 使低版本浏览器也支持所有es6的语法
-import "@babel/polyfill";
+// import "@babel/polyfill";
 
 import React from "react";
 import ReactDom from "react-dom";

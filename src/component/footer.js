@@ -1,6 +1,9 @@
 import React from "react";
+import { add } from "../util/util";
 
 function Footer() {
+  add(2, 3);
+
   // var rootDom = document.getElementById("root");
   // var Footer = document.createElement("div");
   // Footer.setAttribute("id", "footer");

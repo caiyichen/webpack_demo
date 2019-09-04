@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { add } from "../util/util";
 
 class Content extends React.Component {
   constructor() {
@@ -7,15 +8,19 @@ class Content extends React.Component {
     this.state = {
       count: 0
     };
+    add(1, 2);
+
+    // 使用lodash
+    const join = _.join([1, 2, 3], "**");
+    console.log("join===", join);
   }
 
   componentDidMount() {
-    this.setStateFunc();
+    // this.setStateFunc();
     this.getMockData();
   }
 
   getMockData() {
-    console.log(222333);
     axios({
       url: "/mock",
       method: "get",
@@ -24,8 +29,8 @@ class Content extends React.Component {
         "cache-control": "max-age=86400,public"
       }
     }).then(
-      (data) => {
-        console.log(data);
+      () => {
+        // console.log(data);
         // console.log(...data.data.data.list);
       },
       (err) => {
@@ -55,7 +60,8 @@ class Content extends React.Component {
     return (
       <div>
         <button onClick={this.getMockData.bind(this)}>点击</button>
-        <div className="move-box"></div>
+        {/* 盒子从左上角移动到右下角 */}
+        {/* <div className="move-box" /> */}
       </div>
     );
   }

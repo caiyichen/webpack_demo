@@ -2,26 +2,14 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const webpack = require("webpack");
 
 // 入口文件是"./src/index.js"，进行打包，将打包好的文件bundle.js 放在当前目录下的"dist"文件夹里。
 module.exports = {
-  mode: "development", // production:被压缩；development:不压缩
-  devtool: "source-map", // development cheap-module-eval-source-map
-  // devtool：'cheap-module-source-map',// production
   // 打包入口文件
   // entry: "./src/index.js",
-  devServer: {
-    overlay: true, // 当有错误时会在浏览器中弹出提示错误(如Eslint错误)
-    contentBase: path.join(__dirname, "dist"), // 从这个文件夹启动一个服务
-    open: true, // 启动服务时自动在浏览器中打开
-    port: 1992,
-    hot: true, // 开启热模块更新功能
-    hotOnly: true // 即使HMR功能没生效，也不要浏览器自动重新刷新
-    // proxy: {}
-  },
   entry: {
     // entry为object时，默认打包输出的文件名为键值+'.js'
+    lodash: "./src/util/lodash.js",
     index: "./src/index.js",
     editor: "./src/editor.js"
   },
@@ -29,7 +17,7 @@ module.exports = {
   output: {
     // filename: "bundle.js", // 打包出的文件名
     filename: "[name].js", // index.js editor.js
-    path: path.resolve(__dirname, "dist") // （打包输出的文件路径，文件夹名）。__dirname：当前文件所在路径
+    path: path.resolve(__dirname, "../dist") // （打包输出的文件路径，文件夹名）。__dirname：当前文件所在路径
     // publicPath: "https://cdn.example.com/assets/"
   },
   // 模块处理
@@ -102,13 +90,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html", // 基于这个模板生成html文件
       filename: "index.html", // 打包生成的html的文件名
-      chunks: ["index"] // index.html引入打包后的index.js
+      chunks: ["index", "lodash"] // index.html引入打包后的index.js
     }),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "editor.html",
       chunks: ["editor"] // editor.html引入打包后的editor.js
-    }),
-    new webpack.HotModuleReplacementPlugin() // 使用热模块更新插件
+    })
   ]
 };

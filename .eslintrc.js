@@ -36,7 +36,8 @@ module.exports = {
     "no-new": 0,
     "no-console": 0,
     "comma-dangle": 0,
-    "max-len": ["error", 200]
+    "max-len": ["error", 200],
+    "import/no-extraneous-dependencies": 0
     // 'prettier/prettier': 1,
     // 'prefer-promise-reject-errors': 0,
     // 'react/no-deprecated': 1,
@@ -44,6 +45,7 @@ module.exports = {
   globals: {
     module: false,
     describe: false,
-    it: false
+    it: false,
+    _: false
   }
 };
