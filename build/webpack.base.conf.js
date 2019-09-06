@@ -9,9 +9,8 @@ module.exports = {
   // entry: "./src/index.js",
   entry: {
     // entry为object时，默认打包输出的文件名为键值+'.js'
-    lodash: "./src/util/lodash.js",
-    index: "./src/index.js",
-    editor: "./src/editor.js"
+    index: "./src/index.js"
+    // editor: "./src/editor.js"
   },
   // 打包输出配置
   output: {
@@ -91,11 +90,16 @@ module.exports = {
       template: "./src/index.html", // 基于这个模板生成html文件
       filename: "index.html", // 打包生成的html的文件名
       chunks: ["index", "lodash"] // index.html引入打包后的index.js
-    }),
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      filename: "editor.html",
-      chunks: ["editor"] // editor.html引入打包后的editor.js
     })
+    // new HtmlWebpackPlugin({
+    //   template: "./src/index.html",
+    //   filename: "editor.html",
+    //   chunks: ["editor"] // editor.html引入打包后的editor.js
+    // })
   ]
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: "all"
+  //   }
+  // }
 };

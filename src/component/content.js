@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { add } from "../util/util";
+import _ from "lodash";
+// import getAge, { add, getName, setName } from "../util/util";
 
 class Content extends React.Component {
   constructor() {
@@ -8,11 +9,31 @@ class Content extends React.Component {
     this.state = {
       count: 0
     };
-    add(1, 2);
 
     // 使用lodash
     const join = _.join([1, 2, 3], "**");
     console.log("join===", join);
+
+    console.log(performance.getEntriesByType("navigation"));
+
+    const a = true;
+    if (a) {
+      /* eslint-disable */
+      const module = require("../util/module");
+
+      console.log(module.name); // shitou
+      module.setName("石头");
+      console.log(module.name, module.getName()); // shitou,'石头'
+
+      console.log(module.person1.name); // 'caicai'
+      module.setName2("菜菜");
+      console.log(module.person1.name, module.getName2()); // "菜菜","菜菜"
+    }
+
+    // add(1, 2);
+    // getAge();
+    // getName();
+    // setName("shitou");
   }
 
   componentDidMount() {
@@ -33,7 +54,7 @@ class Content extends React.Component {
         // console.log(data);
         // console.log(...data.data.data.list);
       },
-      (err) => {
+      err => {
         console.log("err", err);
       }
     );

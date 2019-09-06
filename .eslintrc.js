@@ -46,6 +46,7 @@ module.exports = {
     module: false,
     describe: false,
     it: false,
-    _: false
+    _: false,
+    require: false
   }
 };

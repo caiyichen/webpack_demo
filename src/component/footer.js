@@ -1,8 +1,8 @@
 import React from "react";
-import { add } from "../util/util";
+// import { obj } from "../util/util";
 
 function Footer() {
-  add(2, 3);
+  // getName();
 
   // var rootDom = document.getElementById("root");
   // var Footer = document.createElement("div");
