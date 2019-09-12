@@ -11,7 +11,7 @@ const baseConfig = require("./webpack.base.conf");
 // 入口文件是"./src/index.js"，进行打包，将打包好的文件bundle.js 放在当前目录下的"dist"文件夹里。
 const devConfig = {
   mode: "development", // production:被压缩；development:不压缩
-  devtool: "source-map", // development cheap-module-eval-source-map
+  // devtool: "source-map", // development cheap-module-eval-source-map
   // devtool：'cheap-module-source-map',// production
   // 打包入口文件
   // entry: "./src/index.js",

@@ -1,39 +1,24 @@
 import React from "react";
 import axios from "axios";
-import _ from "lodash";
-// import getAge, { add, getName, setName } from "../util/util";
+// import _ from "lodash";
+import person from "../util/getPerson";
 
 class Content extends React.Component {
   constructor() {
     super();
     this.state = {
-      count: 0
+      count: 0,
+      name: person.name
     };
 
-    // 使用lodash
-    const join = _.join([1, 2, 3], "**");
-    console.log("join===", join);
-
-    console.log(performance.getEntriesByType("navigation"));
-
-    const a = true;
-    if (a) {
-      /* eslint-disable */
-      const module = require("../util/module");
-
-      console.log(module.name); // shitou
-      module.setName("石头");
-      console.log(module.name, module.getName()); // shitou,'石头'
-
-      console.log(module.person1.name); // 'caicai'
-      module.setName2("菜菜");
-      console.log(module.person1.name, module.getName2()); // "菜菜","菜菜"
-    }
-
-    // add(1, 2);
-    // getAge();
-    // getName();
-    // setName("shitou");
+    // 异步加载
+    import(/* webpackChunkName:'util' */ "../util/util").then(({ name }) => {
+      console.log(name);
+    });
+    // import(/* webpackChunkName:'lodash' */ "lodash").then(({ join }) => {
+    //   const joinData = join([1, 2, 3], "**");
+    //   console.log("join===", joinData);
+    // });
   }
 
   componentDidMount() {
@@ -54,7 +39,7 @@ class Content extends React.Component {
         // console.log(data);
         // console.log(...data.data.data.list);
       },
-      err => {
+      (err) => {
         console.log("err", err);
       }
     );
@@ -80,6 +65,7 @@ class Content extends React.Component {
   render() {
     return (
       <div>
+        {this.state.name}
         <button onClick={this.getMockData.bind(this)}>点击</button>
         {/* 盒子从左上角移动到右下角 */}
         {/* <div className="move-box" /> */}

@@ -10,6 +10,5 @@ import App from "./app";
 import "./index.css";
 // 引入字体图标样式
 import "./font/iconfont.css";
-import "./util/util";
 
 ReactDom.render(<App />, document.getElementById("root"));

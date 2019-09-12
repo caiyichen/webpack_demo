@@ -6,7 +6,7 @@ const baseConfig = require("./webpack.base.conf");
 
 const prodConfig = {
   mode: "production", // production:被压缩；development:不压缩
-  devtool: "source-map" // development cheap-module-eval-source-map
+  // devtool: "source-map" // development cheap-module-eval-source-map
   // devtool：'cheap-module-source-map',// production
 };
 

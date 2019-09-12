@@ -88,18 +88,45 @@ module.exports = {
     // 打包完成后基于template生成html页面，并自动引入打包后对应的js
     new HtmlWebpackPlugin({
       template: "./src/index.html", // 基于这个模板生成html文件
-      filename: "index.html", // 打包生成的html的文件名
-      chunks: ["index", "lodash"] // index.html引入打包后的index.js
+      filename: "index.html" // 打包生成的html的文件名
+      // chunks: ["index", "lodash"] // index.html引入打包后的index.js
     })
     // new HtmlWebpackPlugin({
     //   template: "./src/index.html",
     //   filename: "editor.html",
     //   chunks: ["editor"] // editor.html引入打包后的editor.js
     // })
-  ]
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: "all"
-  //   }
-  // }
+  ],
+  // 优化
+  optimization: {
+    // 代码分割块
+    splitChunks: {
+      chunks: "all", // 将对哪些块进行优化。all：异步+同步的，async：仅异步的，initial：仅同步的
+      minSize: 30, // 大于minSize时才会进行代码分割（单位：字节）
+      maxSize: 0,
+      minChunks: 1, // 分割前必须共享模块的最小块数（即模块被引用的次数必须大于minChunks）
+      maxAsyncRequests: 5, // 按需加载时的最大并行请求数（即只分割成设置的块数）;一般直接使用此默认值哈
+      maxInitialRequests: 3, // 入口文件的最大并行请求数（即入口文件引入的库只分割成设置的块数）；一般直接使用此默认值哈
+      automaticNameDelimiter: "~",
+      automaticNameMaxLength: 30,
+      name: true, // 拆分块的名称。true：将根据块和缓存组密钥自动生成名称。（即允许cacheGroups中的filename设置有效）
+      // 缓存组（与'chunks'配合使用（all,initial），仅适用于同步块）
+      cacheGroups: {
+        // 缓存组'vendors'（即：把满足其中条件的同步块分割打包到这个组中，文件名为filename设置的值）
+        // 含义：如果是同步块，然后块是从node_modules引入的，就会把这个库分割到vendors.js文件中
+        vendors: {
+          test: /[\\/]node_modules[\\/]/, // 筛选此缓存组可选择的模块
+          priority: -10, // 优先级
+          filename: "vendors.js" // 重命名
+        },
+        // 满足default组条件的块，将被进行default组的分割：
+        default: {
+          priority: -20,
+          reuseExistingChunk: true, // 如果模块已经被打包过了，则直接复用而不需要再被打包
+          filename: "common.js"
+        }
+        // 如果同步块满足vendors、default两个组，则根据priority（优先级）值来确定按哪个组来分割：-10> -20，所以按vendors组分割。
+      }
+    }
+  }
 };

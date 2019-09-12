@@ -10,5 +10,6 @@
       }
     ],
     "@babel/preset-react"
-  ]
+  ],
+  "plugins": ["@babel/plugin-syntax-dynamic-import"] // 使支持使用import()方法做动态加载
 }
