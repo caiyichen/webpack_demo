@@ -1,4 +1,7 @@
 {
     "eslint.autoFixOnSave": true,
-    "editor.find.autoFindInSelection": true
+    "editor.find.autoFindInSelection": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
 }

@@ -7,7 +7,6 @@ function Header() {
   // Header.classList.add("header");
   // Header.innerHTML = "Header";
   // rootDom.appendChild(Header);
-
   return <div className="header">Header</div>;
 }
 

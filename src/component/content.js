@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-// import _ from "lodash";
+import _ from "lodash";
 import person from "../util/getPerson";
 
 class Content extends React.Component {
@@ -8,13 +8,15 @@ class Content extends React.Component {
     super();
     this.state = {
       count: 0,
-      name: person.name
+      name: person.name,
     };
 
     // 异步加载
     import(/* webpackChunkName:'util' */ "../util/util").then(({ name }) => {
       console.log(name);
     });
+    _.join([1, 2, 3], "**");
+
     // import(/* webpackChunkName:'lodash' */ "lodash").then(({ join }) => {
     //   const joinData = join([1, 2, 3], "**");
     //   console.log("join===", joinData);
@@ -30,10 +32,11 @@ class Content extends React.Component {
     axios({
       url: "/mock",
       method: "get",
-      baseURL: "https://www.easy-mock.com/mock/5cf5cc38b1f9bc4337c5e5b8/example/api/",
+      baseURL:
+        "https://www.easy-mock.com/mock/5cf5cc38b1f9bc4337c5e5b8/example/api/",
       headers: {
-        "cache-control": "max-age=86400,public"
-      }
+        "cache-control": "max-age=86400,public",
+      },
     }).then(
       () => {
         // console.log(data);

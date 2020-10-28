@@ -1,7 +1,7 @@
 {
   "presets": [
     [
-      "@babel/preset-env",
+      "@babel/preset-env", // 2. 将ES6语法转成 ES5
       {
         "targets": {
           "chrome": "67" // chrome浏览器版本大于67时就不做转换
@@ -9,7 +9,7 @@
         "useBuiltIns": "usage" // 低版本浏览器中只补充项目中使用到的es6语法
       }
     ],
-    "@babel/preset-react"
+    "@babel/preset-react" // 1. 先把react 的jsx 转换成 React.createElement() 普通的js函数调用
   ],
   "plugins": ["@babel/plugin-syntax-dynamic-import"] // 使支持使用import()方法做动态加载
 }

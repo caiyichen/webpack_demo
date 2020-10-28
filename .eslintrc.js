@@ -1,20 +1,20 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true
+    es6: true,
   },
   parser: "babel-eslint",
   extends: ["airbnb", "plugin:react/recommended"],
   globals: {
     Atomics: "readonly",
-    SharedArrayBuffer: "readonly"
+    SharedArrayBuffer: "readonly",
   },
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 2018,
-    sourceType: "module"
+    sourceType: "module",
   },
   plugins: ["react"],
   rules: {
@@ -37,7 +37,7 @@ module.exports = {
     "no-console": 0,
     "comma-dangle": 0,
     "max-len": ["error", 200],
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
     // 'prettier/prettier': 1,
     // 'prefer-promise-reject-errors': 0,
     // 'react/no-deprecated': 1,
@@ -47,6 +47,6 @@ module.exports = {
     describe: false,
     it: false,
     _: false,
-    require: false
-  }
+    require: false,
+  },
 };
