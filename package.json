@@ -44,7 +44,7 @@
     "husky": "^3.0.4",
     "lint-staged": "^9.2.5",
     "lodash": "^4.17.15",
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "mochawesome": "^4.1.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
